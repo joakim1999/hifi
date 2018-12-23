@@ -70,8 +70,7 @@ def main():
     # Only allow one instance of the program to run at a time
     pm = hifi_vcpkg.VcpkgRepo(args)
     with hifi_singleton.Singleton(pm.lockFile) as lock:
-        if not pm.upToDate():
-            pm.bootstrap()
+        pm.bootstrap()
 
         # Always write the tag, even if we changed nothing.  This 
         # allows vcpkg to reclaim disk space by identifying directories with
