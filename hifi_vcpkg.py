@@ -118,30 +118,6 @@ endif()
 
     # Make sure the VCPKG prerequisites are all there.
     def bootstrap(self):
-        if self.upToDate():
-            return
-
-        self.clean()
-
-        downloadVcpkg = False
-        if self.args.force_bootstrap:
-            print("Forcing bootstrap")
-            downloadVcpkg = True
-
-        if not downloadVcpkg and not os.path.isfile(self.exe):
-            print("Missing executable, boostrapping")
-            downloadVcpkg = True
-        
-        # Make sure we have a vcpkg executable
-        testFile = os.path.join(self.path, '.vcpkg-root')
-        if not downloadVcpkg and not os.path.isfile(testFile):
-            print("Missing {}, bootstrapping".format(testFile))
-            downloadVcpkg = True
-
-        if downloadVcpkg:
-            print("Fetching vcpkg from {} to {}".format(self.vcpkgUrl, self.path))
-            hifi_utils.downloadAndExtract(self.vcpkgUrl, self.path, self.vcpkgHash)
-
         print("Replacing port files")
         portsPath = os.path.join(self.path, 'ports')
         if (os.path.islink(portsPath)):
