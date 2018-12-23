@@ -12,7 +12,7 @@ target_python()
 
 if (HIFI_ANDROID )
     execute_process(
-        COMMAND ${HIFI_PYTHON_EXEC} ${CMAKE_CURRENT_SOURCE_DIR}/prebuild.py --android --build-root ${CMAKE_BINARY_DIR}
+        COMMAND ${HIFI_PYTHON_EXEC} ${CMAKE_CURRENT_SOURCE_DIR}/prebuild.py --android --build-root ${CMAKE_BINARY_DIR} --vcpkg-root ${CMAKE_CURRENT_SOURCE_DIR}/vcpkg
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
 else()
